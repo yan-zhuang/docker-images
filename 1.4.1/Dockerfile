@@ -7,10 +7,11 @@ ENV PG_JDBC_URL https://jdbc.postgresql.org/download/postgresql-9.4.1208.jre7.ja
 ENV LIBREPLAN_WAR_URL http://downloads.sourceforge.net/project/libreplan/LibrePlan/libreplan_$LIBREPLAN_VERSION.war 
 
 ADD "$PG_JDBC_URL" $CATALINA_HOME/lib/
+ADD $LIBREPLAN_WAR_URL $CATALINA_HOME/webapps/libreplan.war
 COPY assets/libreplan.xml $CATALINA_HOME/conf/Catalina/localhost/
 COPY assets/catalina.policy $CATALINA_HOME/conf/
+COPY assets/tomcat-users.xml $CATALINA_HOME/conf/
 COPY assets/setenv.sh $CATALINA_HOME/bin/
-ADD $LIBREPLAN_WAR_URL $CATALINA_HOME/webapps/libreplan.war
 
 RUN apt-get update && apt-get install -y \
     cutycapt \

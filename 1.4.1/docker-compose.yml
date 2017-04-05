@@ -2,7 +2,7 @@ db:
     container_name: db
     image: postgres:9.4
     ports:
-        - "5432:5432"
+        - "5681:5432"
     environment:
         POSTGRES_USER: libreplan
         POSTGRES_PASSWORD: secret
@@ -13,6 +13,6 @@ web:
     container_name: web
     image: libreplan/libreplan:latest
     ports:
-        - "8080:8080"
+        - "5680:8080"
     links:
         - db
